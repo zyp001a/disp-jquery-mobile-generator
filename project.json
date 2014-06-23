@@ -1,0 +1,259 @@
+{
+    "distPath": "dist",
+    "bowerPath": "client/bower_components",
+    "libPath": "",
+    "files": [
+        "client/index.html",
+        "client/footer.html",
+        "client/main.js",
+        "client/tappy.js",
+        "server/server.js"
+    ],
+    "deps": [
+        "mongo-http",
+        "jquery-mobile",
+				"angular"
+    ],
+    "mongo-http": [
+        {
+            "folder": "server/user",
+            "env": {
+                "database": "wulu",
+                "root": "/user",
+                "collection": "main"
+            }
+        }
+    ],
+    "test": {
+        "distPath": "test",
+        "env": {
+            "port": 8083
+        }
+    },
+    "tasks": [
+        {
+            "root": "server",
+            "bin": "node",
+            "main": "server/server.js"
+        }
+    ],
+    "env": {
+        "port": 80,
+        "footer": {
+            "elements": [
+                {
+                    "goto": "task",
+                    "text": "任务"
+                },
+                {
+                    "goto": "guide",
+                    "text": "主页"
+                },
+                {
+                    "goto": "personal",
+                    "text": "个人"
+                }
+            ]
+        },
+        "steps": [
+            {
+                "name": "guide",
+                "controls": [
+                    {
+                        "type": "goto",
+                        "goto": "list",
+                        "text": "随便看看"
+                    },
+                    {
+                        "type": "goto",
+                        "goto": "registe",
+                        "text": "注册"
+                    },
+                    {
+                        "type": "goto",
+                        "goto": "login",
+                        "text": "登陆"
+                    }
+                ]
+            },
+            {
+                "name": "login",
+                "elements": [
+                    {
+                        "type": "input",
+                        "text": "手机号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "密码"
+                    }
+                ],
+                "controls": [
+                    {
+                        "type": "goto",
+                        "goto": "list",
+                        "text": "登陆"
+                    },
+                    {
+                        "type": "goto",
+                        "goto": "forgetpass",
+                        "text": "忘记密码"
+                    }
+                ]
+            },
+            {
+                "name": "registe",
+                "elements": [
+                    {
+                        "type": "input",
+                        "text": "姓名"
+                    },
+                    {
+                        "type": "input",
+                        "text": "手机号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "验证码"
+                    },
+                    {
+                        "type": "input",
+                        "text": "密码"
+                    },
+                    {
+                        "type": "input",
+                        "text": "重复"
+                    },
+                    {
+                        "type": "input",
+                        "text": "工作"
+                    },
+                    {
+                        "type": "input",
+                        "text": "年龄"
+                    },
+                    {
+                        "type": "input",
+                        "text": "性别"
+                    },
+                    {
+                        "type": "input",
+                        "text": "身份证号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "兴趣"
+                    },
+                    {
+                        "type": "input",
+                        "text": "教育程度"
+                    },
+                    {
+                        "type": "input",
+                        "text": "居住地"
+                    }
+
+										
+
+                ],
+                "controls": [
+                    {
+                        "type": "goto",
+                        "goto": "list",
+                        "text": "提交注册信息"
+                    }
+                ]
+            },
+            {
+                "name": "forgetpass",
+                "elements": [
+                    {
+                        "type": "input",
+                        "text": "手机号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "验证码"
+                    }
+                ],
+                "controls": [
+                    {
+                        "type": "goto",
+                        "goto": "list",
+                        "text": "确认"
+                    }
+                ]
+            },
+            {
+                "name": "list",
+                "title": "动态工作目录",
+                "footer": true
+            },
+            {
+                "name": "task",
+                "title": "动态任务管理",
+                "footer": true
+            },
+            {
+                "name": "personal",
+								"elements": [
+                    {
+                        "type": "input",
+                        "text": "姓名"
+                    },
+                    {
+                        "type": "input",
+                        "text": "手机号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "验证码"
+                    },
+                    {
+                        "type": "input",
+                        "text": "密码"
+                    },
+                    {
+                        "type": "input",
+                        "text": "重复"
+                    },
+                    {
+                        "type": "input",
+                        "text": "工作"
+                    },
+                    {
+                        "type": "input",
+                        "text": "年龄"
+                    },
+                    {
+                        "type": "input",
+                        "text": "性别"
+                    },
+                    {
+                        "type": "input",
+                        "text": "身份证号"
+                    },
+                    {
+                        "type": "input",
+                        "text": "兴趣"
+                    },
+                    {
+                        "type": "input",
+                        "text": "教育程度"
+                    },
+                    {
+                        "type": "input",
+                        "text": "居住地"
+                    }
+
+								],
+                "footer": true
+            },
+            {
+                "name": "details",
+								"title": "动态工作展示",
+                "footer": true
+            }
+        ]
+    }
+}

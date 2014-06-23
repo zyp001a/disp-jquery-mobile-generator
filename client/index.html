@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>老有所依</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/jquery-mobile-bower/css/jquery.mobile-1.4.2.min.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="../bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+
+		<style>
+			span.glyphicon {
+			font-size: 10em;
+			}
+			li img {
+			width  : 100%;
+			height : auto;
+			}			
+		</style>
+  </head>
+  <body>
+
+
+^^var index = 0;$$
+^^steps.forEach(function(step){$$
+^^index++;$$
+		<div data-role="page" id="page^^=index$$" data-url="page^^=index$$" style="min-height: 581px;">
+			^^if(step.header){$$
+      <div data-role="header" class="ustatic uheader">
+      </div><!-- /header -->
+			^^} else if(step.title){$$
+      <div data-role="header">
+        <h1 role="heading">^^=step.title$$</h1>
+			</div>
+			^^}$$
+
+      <div data-role="content" class="ui-content" role="main">	
+				^^if(step.elements){$$
+				<form id="form^^=index$$">
+	^^index2=0;$$
+	^^step.elements.forEach(function(el){$$
+		^^index2++;$$
+		^^if(el.type == "input"){$$	
+        <label for="input^^=index2$$">^^=el.text$$</label>					
+				<input type="text" name="name" id="input^^=index2$$" value="" placeholder="^^=el.hint$$" />
+			^^}else if(el.type == "list"){$$
+				<div class="ui-controlgroup-controls">
+					^^var index3=0;$$
+				^^el.array.forEach(function(e){$$
+					^^index3++$$
+					<input type="checkbox" name="checkbox-^^=index3$$a" id="checkbox-^^=index3$$a" class="custom"><label for="checkbox-^^=index3$$a">^^=e$$</label>
+
+				^^})$$
+				</div>
+			^^}else if(el.type == "list"){$$
+			^^}else if(el.type == "recommends"){$$
+				
+			^^}$$
+		^^})$$
+				<form/>
+				^^}$$
+				^^if(step.controls){$$
+	^^step.controls.forEach(function(cl){$$
+		^^if(cl.type == "next"){$$
+        <p><a href="#page^^=index+1$$" data-role="button">^^=cl.text||"下一步"$$</a></p>
+		^^}else if(cl.type == "last"){$$
+				<p><a href="#page^^=index-1$$" data-role="button">^^=cl.text||"上一步"$$</a></p>
+		^^}else if(cl.type == "again"){$$
+				<p><a onclick="addMore('page^^=index$$')" data-role="button">^^=cl.text$$</a></p>
+		^^}else if(cl.type == "goto"){$$
+				<p><a href="#page^^=funcs.getIndex(cl.goto, steps)$$" data-role="button" >^^=cl.text$$</a></p>
+		^^}$$
+	^^})$$				
+				^^}$$
+				^^if(step.footer){$$
+				<div data-role="footer" data-position="fixed" class="ustatic ufooter">
+				</div>
+				^^}$$
+      </div><!-- /content -->
+    </div>
+^^})$$
+
+		
+
+		
+		<script src="bower_components/jquery/jquery.min.js"></script>
+		<script src="bower_components/jquery-mobile-bower/js/jquery.mobile-1.4.2.min.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="tappy.js"></script>
+		<script src="main.js"></script>
+		<script src="angular-main.js"></script>
+  </body>
+</html>

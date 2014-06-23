@@ -1,0 +1,10 @@
+<div data-role="navbar">
+	<ul>
+		^^if(header.elements){$$
+		^^header.elements.forEach(function(cl){$$
+		<li><a href="#page^^=funcs.getIndex(cl.goto, steps)$$" data-role="button">^^=cl.text$$</a></li>
+		^^})$$
+		^^}$$
+
+	</ul>
+</div>
